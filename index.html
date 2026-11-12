@@ -5,316 +5,329 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tillitskompassen</title>
+
 <style>
-*{box-sizing:border-box;}
-
-body{
-margin:0;
-font-family:'Segoe UI',sans-serif;
-background:linear-gradient(180deg,#f8f5ff,#efe9ff);
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:30px;
+* {
+    box-sizing: border-box;
 }
 
-.container{
-width:100%;
-max-width:1100px;
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, #f8f5ff, #efe9ff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
 }
 
-.deck{
-border-radius:24px;background:#F8CEE3;
-
-
-padding:60px;
-box-shadow:0 20px 50px rgba(79,49,143,.15);
-cursor:pointer;
-transition:.35s;
-position:relative;
-overflow:hidden;
+.container {
+    width: 100%;
+    max-width: 1100px;
 }
 
-.deck:hover{
-transform:translateY(-6px) scale(1.01);
+.deck {
+    border-radius: 24px;
+    background: #F8CEE3;
+    padding: 60px;
+    box-shadow: 0 20px 50px rgba(79,49,143,.15);
+    cursor: pointer;
+    transition: .35s;
+    position: relative;
+    overflow: hidden;
 }
 
-.logo{
-color:#4f318f;
-font-size:24px;
+.deck:hover {
+    transform: translateY(-6px) scale(1.01);
 }
 
-.title{
-font-size:clamp(56px,8vw,110px);
-font-weight:900;
-line-height:.92;
-color:#4f318f;
-margin-top:10px;
+.logo {
+    color: #4f318f;
+    font-size: 24px;
 }
 
-.subtitle{
-max-width:650px;
-font-size:24px;
-color:#4f318f;
-margin-top:25px;
+.title {
+    font-size: clamp(56px, 8vw, 110px);
+    font-weight: 900;
+    line-height: .92;
+    color: #4f318f;
+    margin-top: 10px;
 }
 
-.tap{
-margin-top:30px;
-font-weight:700;
-color:#4f318f;
+.subtitle {
+    max-width: 650px;
+    font-size: 24px;
+    color: #4f318f;
+    margin-top: 25px;
 }
 
-.cardView{
-display:none;
+.tap {
+    margin-top: 30px;
+    font-weight: 700;
+    color: #4f318f;
 }
 
-.card{
-background:white;
-border:8px solid #f7b1c9;
-border-radius:40px;
-padding:50px;
-box-shadow:0 20px 50px rgba(79,49,143,.15);
-animation:fade .4s ease;
-position:relative;
+.cardView {
+    display: none;
 }
 
-@keyframes fade{
-from{opacity:0;transform:translateY(15px);}
-to{opacity:1;transform:none;}
+.card {
+    background: white;
+    border: 8px solid #f7b1c9;
+    border-radius: 40px;
+    padding: 50px;
+    box-shadow: 0 20px 50px rgba(79,49,143,.15);
+    animation: fade .4s ease;
+    position: relative;
 }
 
-.badge{
-display:inline-block;
-color:#4f318f;
-font-weight:800;
-font-size:18px;
-text-transform:uppercase;
-letter-spacing:1px;
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
 }
 
-.question{
-font-size:40px;
-line-height:1.3;
-margin:40px 0;
-color:#4f318f;
-font-weight:800;
-min-height:140px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
+.badge {
+    display: inline-block;
+    color: #4f318f;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.actions{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:12px;
+.question {
+    font-size: 40px;
+    line-height: 1.3;
+    margin: 40px 0;
+    color: #4f318f;
+    font-weight: 800;
+    min-height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-button{
-border:none;
-border-radius:999px;
-padding:15px 24px;
-font-size:16px;
-font-weight:700;
-cursor:pointer;
+.actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.primary{
-background:#4f318f;
-color:white;
+button {
+    border: none;
+    border-radius: 999px;
+    padding: 15px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
 }
 
-.secondary{
-background:#a78bfa;
-color:white;
+.primary {
+    background: #4f318f;
+    color: white;
 }
 
-.ghost{
-background:white;
-color:#4f318f;
+.secondary {
+    background: #a78bfa;
+    color: white;
 }
 
-.compass{
-display:none;
-margin-top:25px;
-padding:30px;
-background:white;
-border:8px solid #d7c4f5;
-border-radius:40px;
-font-size:24px;
-color:#4f318f;
+.ghost {
+    background: white;
+    color: #4f318f;
 }
 
-.counter{
-margin-top:20px;
-color:#666;
-font-size:14px;
+.compass {
+    display: none;
+    margin-top: 25px;
+    padding: 30px;
+    background: white;
+    border: 8px solid #d7c4f5;
+    border-radius: 40px;
+    font-size: 24px;
+    color: #4f318f;
 }
 
-.homeBtn{
-position:absolute;
-top:15px;
-right:15px;
-background:transparent;
-color:#4f318f;
-width:auto;
-height:auto;
-padding:0;
-font-size:24px;
-cursor:pointer;
-border:none;
-}
-t-size:18px;
+.counter {
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
 }
 
+.homeBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    color: #4f318f;
+    width: auto;
+    height: auto;
+    padding: 0;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+}
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
-<div id="startScreen" class="deck" onclick="drawConversation()">
+    <div id="startScreen" class="deck" onclick="drawConversation()">
 
-<div class="logo">Tillitslyftet</div>
+        <div class="logo">Tillitslyftet</div>
 
-<div style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
 
-<div style="flex:1;min-width:320px;">
-<div class="title">Korten<br>på bordet</div>
-<div class="subtitle">
-Tillit ökar när vi pratar om det öppet. Nu lägger vi vardagens vanor,
-våra dilemman och invånarnas perspektiv på bordet.
-</div>
-<div class="tap">▼ Klicka för att öppna kortleken ▼</div>
-</div>
+            <div style="flex:1;min-width:320px;">
+                <div class="title">Korten<br>på bordet</div>
 
-<div style="flex:0 0 320px;display:flex;justify-content:center;">
-<div style="position:relative;width:240px;height:340px;">
+                <div class="subtitle">
+                    Tillit ökar när vi pratar om det öppet. Nu lägger vi vardagens vanor,
+                    våra dilemman och invånarnas perspektiv på bordet.
+                </div>
 
-<svg style="position:absolute;top:0;left:18px;width:204px;height:255px;overflow:visible;" viewBox="0 0 204 255">
-<path d="M102 8 C150 8 185 35 192 88 C198 135 176 175 145 205 C132 218 123 228 118 242 L86 242 C81 228 72 218 59 205 C28 175 6 135 12 88 C19 35 54 8 102 8 Z" fill="#f57f83"/>
-</svg>
+                <div class="tap">▼ Klicka för att öppna kortleken ▼</div>
+            </div>
 
-<div style="position:absolute;bottom:24px;left:102px;width:36px;height:22px;background:#f7b1b9;border-radius:6px;"></div>
-<div style="position:absolute;bottom:46px;left:112px;width:1px;height:52px;background:#ffffff;transform:rotate(-5deg);transform-origin:bottom center;"></div>
-<div style="position:absolute;bottom:46px;left:120px;width:1px;height:52px;background:#ffffff;"></div>
-<div style="position:absolute;bottom:46px;left:128px;width:1px;height:52px;background:#ffffff;transform:rotate(5deg);"></div>
+            <div style="flex:0 0 320px;display:flex;justify-content:center;">
+                <div style="position:relative;width:240px;height:340px;">
 
-</div>
-</div>
+                    <svg style="position:absolute;top:0;left:18px;width:204px;height:255px;overflow:visible;" viewBox="0 0 204 255">
+                        <path d="M102 8 C150 8 185 35 192 88 C198 135 176 175 145 205 C132 218 123 228 118 242 L86 242 C81 228 72 218 59 205 C28 175 6 135 12 88 C19 35 54 8 102 8 Z" fill="#f57f83"/>
+                    </svg>
 
-</div>
-</div>
+                    <div style="position:absolute;bottom:24px;left:102px;width:36px;height:22px;background:#f7b1b9;border-radius:6px;"></div>
+                    <div style="position:absolute;bottom:46px;left:112px;width:1px;height:52px;background:#ffffff;transform:rotate(-5deg);transform-origin:bottom center;"></div>
+                    <div style="position:absolute;bottom:46px;left:120px;width:1px;height:52px;background:#ffffff;"></div>
+                    <div style="position:absolute;bottom:46px;left:128px;width:1px;height:52px;background:#ffffff;transform:rotate(5deg);"></div>
 
-<div id="cardView" class="cardView">
-<div class="card">
+                </div>
+            </div>
 
-<button class="homeBtn" onclick="restart()">🏠</button>
+        </div>
+    </div>
 
-<div class="badge" id="temaBadge"></div>
-<div class="question" id="conversationQuestion"></div>
+    <div id="cardView" class="cardView">
+        <div class="card">
 
-<div class="actions">
-<button class="secondary" onclick="drawConversation()">🔄 Nytt samtalskort</button>
-<button class="primary" onclick="drawCompass()">🧭 Dra kompasskort</button>
+            <button class="homeBtn" onclick="restart()">🏠</button>
 
-</div>
+            <div class="badge" id="temaBadge"></div>
+            <div class="question" id="conversationQuestion"></div>
 
-<div id="compassBox" class="compass"></div>
+            <div class="actions">
+                <button class="secondary" onclick="drawConversation()">🔄 Nytt samtalskort</button>
+                <button class="primary" onclick="drawCompass()">🧭 Dra kompasskort</button>
+            </div>
+
+            <div id="compassBox" class="compass"></div>
+
+        </div>
+    </div>
 
 </div>
 
 <script>
 const samtalskort = [
-{
-tema: "I VARDAGEN",
-fraga: "När tog du senast ett beslut själv – utan att bolla med någon annan?"
-},
-{
-tema: "I VARDAGEN",
-fraga: "Du pratar på ett möte och någon börjar titta i mobilen. Vad gör du?"
-},
-{
-tema: "I VARDAGEN",
-fraga: "Känner du att du sitter inne på kunskap som inte används?"
-},
-{
-tema: "I VARDAGEN",
-fraga: "Du är osäker på om du får ta ett beslut. Vad gör du? Vem pratar du med?"
-},
-{
-tema: "DILEMMA",
-fraga: "Alla ser problemet. Ingen har mandat att lösa det. Vad gör ni?"
-},
-{
-tema: "DILEMMA",
-fraga: "Du vet vad invånaren behöver, men det ryms inte i uppdraget. Hur långt sträcker du dig?"
-},
-{
-tema: "DILEMMA",
-fraga: "Alla hjälper till. Men använder ni kompetens på rättt sätt? Vem kan ta mer ansvar här - och vem kan släppa lite??"
-},
-{
-tema: "DILEMMA",
-fraga: "Tänk er att ni står i terräng utan karta. Ni vet vart ni vill, men inte hur. Hur kan vi testa oss fram? Vad vore ett 'bra fel' här? Vad kindrar pss från att ta första steget?"
-},
-{
-tema: "PERSPEKTIV",
-fraga: "Det var enklare när jag kunde peka på måtten. Nu måste jag tänka och lyssna. Vad tänker du när du hör citatet?"
-},
-{
-tema: "PERSPEKTIV",
-fraga: "9 av 10 nya idéer når aldrig hela vägen. Det är inte ett tecken på låg kvalitet, utan på hur innovation faktiskt fungerar. Finns det plats i din vardag att pröva idéer som kanske inte går att räkna hem?"
-},
-{
-tema: "PERSPEKTIV",
-fraga: "I Project Aristotle studerade Google över 180 team för att förstå varför vissa presterade bättre än andra. Det visade sig att psykologisk trygghet var viktigare än utbildning, erfarenhet och tydliga mål. Vad hos oss gör det lätt eller svårt att säga: 'det här fungerar inte' eller 'jag gjorde fel'?"
-},
-{
-tema: "PERSPEKTIV",
-fraga: "Komplicerat arbete går att göra likadant varje gång och ger ofta samma resultat. Komplexa situationer fungerar annorlunda. När fungerar 'gör som det står' dåligt i ditt arbete?"
-},
+    {
+        tema: "I VARDAGEN",
+        fraga: "När tog du senast ett beslut själv – utan att bolla med någon annan?"
+    },
+    {
+        tema: "I VARDAGEN",
+        fraga: "Du pratar på ett möte och någon börjar titta i mobilen. Vad gör du?"
+    },
+    {
+        tema: "I VARDAGEN",
+        fraga: "Känner du att du sitter inne på kunskap som inte används?"
+    },
+    {
+        tema: "I VARDAGEN",
+        fraga: "Du är osäker på om du får ta ett beslut. Vad gör du? Vem pratar du med?"
+    },
+    {
+        tema: "DILEMMA",
+        fraga: "Alla ser problemet. Ingen har mandat att lösa det. Vad gör ni?"
+    },
+    {
+        tema: "DILEMMA",
+        fraga: "Du vet vad invånaren behöver, men det ryms inte i uppdraget. Hur långt sträcker du dig?"
+    },
+    {
+        tema: "DILEMMA",
+        fraga: "Alla hjälper till. Men använder ni kompetens på rättt sätt? Vem kan ta mer ansvar här - och vem kan släppa lite??"
+    },
+    {
+        tema: "DILEMMA",
+        fraga: "Tänk er att ni står i terräng utan karta. Ni vet vart ni vill, men inte hur. Hur kan vi testa oss fram? Vad vore ett 'bra fel' här? Vad kindrar pss från att ta första steget?"
+    },
+    {
+        tema: "PERSPEKTIV",
+        fraga: "Det var enklare när jag kunde peka på måtten. Nu måste jag tänka och lyssna. Vad tänker du när du hör citatet?"
+    },
+    {
+        tema: "PERSPEKTIV",
+        fraga: "9 av 10 nya idéer når aldrig hela vägen. Det är inte ett tecken på låg kvalitet, utan på hur innovation faktiskt fungerar. Finns det plats i din vardag att pröva idéer som kanske inte går att räkna hem?"
+    },
+    {
+        tema: "PERSPEKTIV",
+        fraga: "I Project Aristotle studerade Google över 180 team för att förstå varför vissa presterade bättre än andra. Det visade sig att psykologisk trygghet var viktigare än utbildning, erfarenhet och tydliga mål. Vad hos oss gör det lätt eller svårt att säga: 'det här fungerar inte' eller 'jag gjorde fel'?"
+    },
+    {
+        tema: "PERSPEKTIV",
+        fraga: "Komplicerat arbete går att göra likadant varje gång och ger ofta samma resultat. Komplexa situationer fungerar annorlunda. När fungerar 'gör som det står' dåligt i ditt arbete?"
+    }
 ];
 
 const kompasskort = [
-'Prata om konsekvenserna som skulle kunna uppstå ur detta.',
-'Vad är det som behöver kännas tryggare för att något ska förändras här?',
-'Vad är det värsta som skulle kunna hända om vi testar ett helt annat sätt här?',
-'Vad är egentligen ett "misslyckande" i just den här situationen?',
-'Finns det något "alla vet" men ingen säger nu?',
-'Finns det något i samtalet som hintar om försiktighet just nu?',
-'Finns det något vi gör här av vana eller bekvämlighet?',
-'Är det något i denna situation vi dubbelkollar eller dokumenterar "bara för säkerhets skull"?'
+    'Prata om konsekvenserna som skulle kunna uppstå ur detta.',
+    'Vad är det som behöver kännas tryggare för att något ska förändras här?',
+    'Vad är det värsta som skulle kunna hända om vi testar ett helt annat sätt här?',
+    'Vad är egentligen ett "misslyckande" i just den här situationen?',
+    'Finns det något "alla vet" men ingen säger nu?',
+    'Finns det något i samtalet som hintar om försiktighet just nu?',
+    'Finns det något vi gör här av vana eller bekvämlighet?',
+    'Är det något i denna situation vi dubbelkollar eller dokumenterar "bara för säkerhets skull"?'
 ];
 
-function randomItem(array){
-return array[Math.floor(Math.random()*array.length)];
+function randomItem(array) {
+    return array[Math.floor(Math.random() * array.length)];
 }
 
-function drawConversation(){
+function drawConversation() {
+    const kort = randomItem(samtalskort);
 
-const kort = randomItem(samtalskort);
+    document.getElementById('startScreen').style.display = 'none';
+    document.getElementById('cardView').style.display = 'block';
 
-document.getElementById('startScreen').style.display='none';
-document.getElementById('cardView').style.display='block';
+    document.getElementById('temaBadge').innerText = kort.tema;
+    document.getElementById('conversationQuestion').innerText = kort.fraga;
 
-document.getElementById('temaBadge').innerText = kort.tema;
-document.getElementById('conversationQuestion').innerText = kort.fraga;
-
-document.getElementById('compassBox').style.display='none';
+    document.getElementById('compassBox').style.display = 'none';
 }
 
-function drawCompass(){
-const box=document.getElementById('compassBox');
-box.innerHTML='<strong>🧭 Kompasskort</strong><br><br>'+randomItem(kompasskort);
-box.style.display='block';
+function drawCompass() {
+    const box = document.getElementById('compassBox');
+    box.innerHTML = '<strong>🧭 Kompasskort</strong><br><br>' + randomItem(kompasskort);
+    box.style.display = 'block';
 }
 
-function restart(){
-document.getElementById('cardView').style.display='none';
-document.getElementById('startScreen').style.display='block';
+function restart() {
+    document.getElementById('cardView').style.display = 'none';
+    document.getElementById('startScreen').style.display = 'block';
 }
+</script>
+
+</body>
+</html>
